@@ -14,8 +14,7 @@ namespace PariClasses
 {
     public static class checkUpdate
     {
-        private static readonly string webAdress = "http://mdsoft.narod2.ru/Update/";
-        //private static readonly string webAdress = "http://mdsoft.besaba.com/updates/";
+        private static readonly string webAdress = "http://psy.elp87.ru/pari/";
         private static XDocument updateList = new XDocument();
         private static double curBuild;
         private static WebClient myWebClient;

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Windows.Data;
 using System.Windows.Media;
 
@@ -24,19 +21,5 @@ namespace PariClasses
         {
             throw new Exception("The method or operation is not implemented.");
         }
-    }
-
-    /*public class StringItem//Вспомогательный класс для обертки текста элементов ListBoxPersons в PariTrainer.MainWindow
-    {
-        public string strValue { get; set; }
-        public StringItem(string str)
-        {
-            this.strValue = str;
-        }
-
-        public override string ToString()
-        {
-            return strValue;
-        }
-    }*/
+    }    
 }

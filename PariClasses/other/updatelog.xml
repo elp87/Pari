@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Updates>
+	<up>
+		<lastbuild>1</lastbuild>
+		<build>2</build>
+		<file>update2.exe</file>
+	</up>	
+	<up1>
+		<minLastBuild>2</minLastBuild>
+		<maxLastBuild>2</maxLastBuild>
+		<build>3</build>
+		<file>update3.exe</file>
+	</up1>	
+</Updates>
