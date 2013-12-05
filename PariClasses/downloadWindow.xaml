@@ -1,0 +1,10 @@
+﻿<Window x:Class="PariClasses.downloadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Загрузка обновления" Height="165" Width="400">
+    <Grid>
+        <Label Content="Загрузка файла - " Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="fileNameLabel" VerticalAlignment="Top" />
+        <ProgressBar Height="20" HorizontalAlignment="Left" Margin="12,46,0,0" Name="progressBar1" VerticalAlignment="Top" Width="350" Maximum="1000" />
+        <Label Height="28" HorizontalAlignment="Left" Margin="12,85,0,0" Name="infoLabel" VerticalAlignment="Top" />
+    </Grid>
+</Window>

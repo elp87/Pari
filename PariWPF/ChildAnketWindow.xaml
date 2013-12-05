@@ -1,0 +1,46 @@
+﻿<Window x:Class="PariWPF.ChildAnketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Информация о ребенке" Height="589" Width="826" WindowState="Maximized">
+    <Grid>
+        <Image Height="{Binding}" HorizontalAlignment="Left" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="{Binding}" Source="/Pari;component/Images/На%20вопросы.jpg" />
+        <Label Content="Имя" Height="28" HorizontalAlignment="Left" Margin="26,17,0,0" Name="label1" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Cambria" FontStyle="Italic" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="88,17,0,0" Name="textBoxName" VerticalAlignment="Top" Width="215" Background="#FFB8EBAC" TabIndex="1" FontFamily="Cambria" FontSize="16" FontStyle="Italic" />
+        <Label Content="Возраст" Height="37" HorizontalAlignment="Left" Margin="388,17,0,0" Name="label2" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Cambria" FontStyle="Italic" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="473,17,0,0" Name="textBoxAge" VerticalAlignment="Top" Width="120" Background="#FFB8EBAC" TabIndex="2" FontFamily="Cambria" FontSize="16" FontStyle="Italic" />
+        <Button Content="OK" Height="23" HorizontalAlignment="Left" Margin="440,487,0,0" Name="buttonOK" VerticalAlignment="Top" Width="75" Click="buttonOK_Click" TabIndex="5" FontFamily="Cambria" FontSize="16" FontStyle="Italic" FontWeight="Bold" />
+        <Button Content="Отмена" Height="23" HorizontalAlignment="Left" Margin="662,487,0,0" Name="buttonCancel" VerticalAlignment="Top" Width="75" Click="buttonCancel_Click" FontFamily="Cambria" FontSize="16" FontWeight="Bold" FontStyle="Italic" />
+        <Label Content="Пол" Height="28" HorizontalAlignment="Left" Margin="31,51,0,0" Name="label3" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Cambria" FontStyle="Italic" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="88,56,0,0" Name="comboBoxSex" VerticalAlignment="Top" Width="120" Background="#FFB8EBAC" TabIndex="3" FontFamily="Cambria" FontSize="16" FontStyle="Italic">
+            <ComboBoxItem Content="Муж." Background="#FFB8EBAC"/>
+            <ComboBoxItem Content="Жен." Background="#FFB8EBAC"/>
+        </ComboBox>
+        <CheckBox Content="Необходима помощь психолога" Height="31" HorizontalAlignment="Left" Margin="14,94,0,0" Name="checkBoxPsyNeed" VerticalAlignment="Top" Foreground="White" Checked="checkBoxPsyNeed_Checked" Unchecked="checkBoxPsyNeed_Unchecked" FontSize="18" FontFamily="Cambria" TabIndex="4" />
+        <GroupBox Height="350" HorizontalAlignment="Left" Margin="14,131,0,0" Name="groupBoxPsy" VerticalAlignment="Top" Width="778" Visibility="Hidden">
+            <Grid Width="753">
+                <Label Content="Основная причина" Height="28" HorizontalAlignment="Left" Margin="0,11,0,0" Name="label4" VerticalAlignment="Top" Foreground="White" FontFamily="Cambria" FontSize="18" FontStyle="Italic" />
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="193,16,0,0" Name="comboBoxPrimReason" VerticalAlignment="Top" Width="302" SelectionChanged="comboBoxPrimReason_SelectionChanged" FontFamily="Cambria" FontSize="16" FontStyle="Italic" />
+                <Label Content="Другое" Height="33" HorizontalAlignment="Left" Margin="6,53,0,0" Name="labelPrimOther" VerticalAlignment="Top" Foreground="White" Visibility="Hidden" FontSize="18" FontFamily="Cambria" FontStyle="Italic" />
+                <TextBox Height="23" HorizontalAlignment="Right" Margin="0,57,229,0" Name="textBoxPrimOther" VerticalAlignment="Top" Width="370" Visibility="Hidden" FontFamily="Cambria" FontSize="16" FontStyle="Italic" />
+                <Label Content="Вторичные причины" Height="38" HorizontalAlignment="Left" Margin="6,94,0,0" Name="label6" VerticalAlignment="Top" Foreground="White" FontFamily="Cambria" FontSize="18" FontWeight="Normal" FontStyle="Italic" />
+                <CheckBox Content="1. Сложные отношения с ребенком" Height="26" HorizontalAlignment="Left" Margin="6,138,0,0" Name="checkBox1" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI" FontSize="15" FontWeight="Normal" />
+                <CheckBox Content="2. Изменение поведения ребенка" Height="28" HorizontalAlignment="Left" Margin="6,170,0,0" Name="checkBox2" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="3. Страхи (фобии) ребенка" Height="28" HorizontalAlignment="Left" Margin="6,204,0,0" Name="checkBox3" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="4. Агрессивное поведение" Height="21" HorizontalAlignment="Left" Margin="6,238,0,0" Name="checkBox4" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="5. Трудности в обучении" Height="25" HorizontalAlignment="Left" Margin="6,265,0,0" Name="checkBox5" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="6. Трудности в общении с ровесниками (одноклассниками)" Height="23" HorizontalAlignment="Left" Margin="6,296,0,0" Name="checkBox6" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="7. Частые ссоры с другими детьми в семье" Height="24" HorizontalAlignment="Left" Margin="424,130,0,0" Name="checkBox7" VerticalAlignment="Top" Foreground="White" FontSize="15" Width="328" />
+                <CheckBox Content="8. Постоянные споры с отцом" Height="28" HorizontalAlignment="Left" Margin="420,170,0,0" Name="checkBox8" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="9. Постоянные споры с матерью" Height="28" HorizontalAlignment="Left" Margin="420,204,0,0" Name="checkBox9" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="10. Суицидальные попытки" Height="21" HorizontalAlignment="Left" Margin="420,238,0,0" Name="checkBox10" VerticalAlignment="Top" Foreground="White" FontSize="15" />
+                <CheckBox Content="11. Другое" Height="25" HorizontalAlignment="Left" Margin="420,265,0,0" Name="checkBox11" VerticalAlignment="Top" Foreground="White" Checked="checkBox11_Checked" Unchecked="checkBox11_Unchecked" FontSize="15" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="257,100,0,0" Name="textBoxSecOther" VerticalAlignment="Top" Width="252" Text="" Visibility="Hidden" FontFamily="Cambria" FontSize="16" FontStyle="Italic" />
+                <ListBox Height="205" HorizontalAlignment="Left" Margin="4,132,0,0" Name="listBoxSecReason" VerticalAlignment="Top" Width="743" SelectionMode="Multiple" SelectionChanged="listBoxSecReason_SelectionChanged" FontFamily="Cambria" FontSize="16" FontStyle="Italic">
+                    <ListBox.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="LightBlue" />
+                    </ListBox.Resources>
+                </ListBox>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

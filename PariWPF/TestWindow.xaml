@@ -1,0 +1,20 @@
+﻿<Window x:Class="PariWPF.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Методика PARI" Height="401" Width="792" Closing="Window_Closing" WindowState="Maximized" KeyDown="Window_KeyDown" SizeChanged="Window_SizeChanged">
+    <Grid Name="Grid1">
+        <Image Height="{Binding}" HorizontalAlignment="Left" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="{Binding}" Source="/Pari;component/Images/180_5.jpg" />
+        <Label Height="Auto" HorizontalAlignment="Left" Margin="44,45,0,0" Name="labelQuest" FontSize="26" FontWeight="Bold" FontFamily="Cambria" VerticalAlignment="Top" FontStyle="Italic" Foreground="White">
+            <Label.Content>
+                <TextBlock TextWrapping="Wrap" FontSize="26" Height="141">1. Если дети считают свои взгляды правильными, они могут не соглашаться со взглядами родителей.</TextBlock>
+            </Label.Content>
+        </Label>
+        <RadioButton Content="Да" Height="25" HorizontalAlignment="Left" Margin="49,179,0,0" Name="radioButton1" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" FontFamily="Cambria" />
+        <RadioButton Content="Скорее да, чем нет" Height="25" HorizontalAlignment="Left" Margin="49,210,0,0" Name="radioButton2" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" FontFamily="Cambria" />
+        <RadioButton Content="Скорее нет, чем да" Height="25" HorizontalAlignment="Left" Margin="49,241,0,0" Name="radioButton3" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" FontFamily="Cambria" />
+        <RadioButton Content="Нет" Height="21" HorizontalAlignment="Left" Margin="49,272,0,0" Name="radioButton4" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" FontFamily="Cambria" />
+        <Button Content="Далее" Height="23" HorizontalAlignment="Left" Margin="338,293,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" FontSize="16" FontFamily="Cambria" FontStyle="Italic" FontWeight="Bold" />    
+        <Label Height="28" HorizontalAlignment="Right" Margin="0,0,65,27" Name="labelTimer" VerticalAlignment="Bottom" Width="Auto" />
+        <Label Content="Катаева А., Коробов А. © 2012-2013" Height="28" Margin="165,0,186,12" Name="label1" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" />
+    </Grid>
+</Window>

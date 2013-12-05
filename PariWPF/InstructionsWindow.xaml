@@ -1,0 +1,10 @@
+﻿<Window x:Class="PariWPF.InstructionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Instructions" Height="541" Width="826" Closing="Window_Closing" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+        <Image Height="Auto" HorizontalAlignment="Left" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="Auto" Source="/Pari;component/Images/189_5.jpg" />
+        <RichTextBox Margin="12,12,12,53" Name="richTextBox1" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Opacity="0.7" /> 
+        <Button Content="Далее" Height="24" HorizontalAlignment="Right" Margin="0,0,12,12" Name="button1" VerticalAlignment="Bottom" Width="100" Click="button1_Click" FontFamily="Cambria" FontSize="16" FontStyle="Italic" FontWeight="Bold" />        
+    </Grid>
+</Window>

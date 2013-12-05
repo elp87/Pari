@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<options>	  
+  <famType>
+    <name>Обычная семья</name>
+    <num>0</num>
+    <visible>true</visible>
+  </famType>
+  <famType>
+    <name>Опека/попечительство</name>
+    <num>1</num>
+    <visible>true</visible>
+  </famType>
+  <famType>
+    <name>Приемная</name>
+    <num>2</num>
+    <visible>true</visible>
+  </famType>
+  <famType>
+    <name>Детский дом семейного типа</name>
+    <num>3</num>
+    <visible>true</visible>
+  </famType>
+  <famType>
+    <name>Усыновление (заполняется по желанию)</name>
+    <num>4</num>
+    <visible>true</visible>
+  </famType>
+  
+  <famStatus>
+    <name>Замужем/женат</name>
+    <num>0</num>
+    <visible>true</visible>
+  </famStatus>
+  <famStatus>
+    <name>Разведена/разведен</name>
+    <num>1</num>
+    <visible>true</visible>
+  </famStatus>
+  <famStatus>
+    <name>Холост/не замужем</name>
+    <num>2</num>
+    <visible>true</visible>
+  </famStatus>
+  <famStatus>
+    <name>Вдова/вдовец</name>
+    <num>3</num>
+    <visible>true</visible>
+  </famStatus>
+  <famStatus>
+    <name>Повторный брак (в том числе гражданский)</name>
+    <num>4</num>
+    <visible>true</visible>
+  </famStatus>
+
+  <childProblem>
+    <name>Сложные отношения с ребенком</name>
+    <num>0</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Изменение поведения ребенка</name>
+    <num>1</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Страхи (фобии) ребенка</name>
+    <num>2</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Агрессивное поведение</name>
+    <num>3</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Трудности в обучении</name>
+    <num>4</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Трудности в общении с ровесниками (одноклассниками)</name>
+    <num>5</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Частые ссоры с другими детьми в семье</name>
+    <num>6</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Постоянные споры с отцом</name>
+    <num>7</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Постоянные споры с матерью</name>
+    <num>8</num>
+    <visible>true</visible>
+  </childProblem>
+  <childProblem>
+    <name>Психодел</name>
+    <num>9</num>
+    <visible>false</visible>
+  </childProblem>
+  <childProblem>
+    <name>Суицидальные попытки</name>
+    <num>10</num>
+    <visible>true</visible>
+  </childProblem>
+</options>
