@@ -1,4 +1,7 @@
-﻿using System;
+﻿using elp.Extensions;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,12 +22,12 @@ namespace PariWPF
         public TestWindow()
         {
             InitializeComponent();
-            
+
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
         }
-        
+
         private void timer_Tick(object sender, EventArgs e)
         {
             string sMin, sSec;
@@ -74,89 +77,44 @@ namespace PariWPF
 
             curQuest++;
             if (curQuest == 116)
-            {               
-                
+            {
                 AnketWindow.stAnket.calcAspect();
                 AnketWindow.stAnket.setTestDate(DateTime.Now);
                 AnketWindow.stAnket.GUID = Guid.NewGuid().ToString();
                 timer.Stop();
 
-                #region Таблица родителей                
-                PARIDataSet.PerDataTable perDT = new PARIDataSet.PerDataTable();
-                PARIDataSet.PerRow perrow = perDT.NewPerRow();
-                PARIDataSetTableAdapters.PerTableAdapter perAdapter = new PARIDataSetTableAdapters.PerTableAdapter();
-
-
-                perrow[0] = AnketWindow.stAnket.surname;
-                perrow[1] = AnketWindow.stAnket.name;
-                perrow[2] = AnketWindow.stAnket.age;
-                perrow[3] = AnketWindow.stAnket.ownChildCount;
-                perrow[4] = AnketWindow.stAnket.careChildCount;
-                perrow[5] = AnketWindow.stAnket.familyType;
-                perrow[6] = AnketWindow.stAnket.familyStatus;
-                perrow[7] = AnketWindow.stAnket.sex;
-                perrow[8] = AnketWindow.stAnket.testDate;
-                for (int i = 0; i < 23; i++)
+                if (File.Exists(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.dat") &&
+                    File.Exists(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\ch.dat"))
                 {
-                    string columnName = "a" + Convert.ToString(i);
-                    //perrow[columnName] = AnketWindow.stAnket.aspectArray[i].Value;
-                    perrow[columnName] = AnketWindow.stAnket.getAspect(i);
                 }
-                perrow["guid"] = AnketWindow.stAnket.GUID;
-                perDT.AddPerRow(perrow);
-                try
+                else
                 {
-                    perAdapter.Update(perDT);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-                #endregion
-
-                #region Таблица детей
-                foreach (ChildClass child in AnketWindow.stListChildClass.ownChildList)
-                {
+                    List<AdPerson> clientList = new List<AdPerson>();
+                    clientList.Add(AnketWindow.stAnket);
                     
-                    ChildDataSet.ChildDataTable chDT = new ChildDataSet.ChildDataTable();
-                    ChildDataSet.ChildRow chRow = chDT.NewChildRow();
-                    ChildDataSetTableAdapters.ChildTableAdapter chAdapter = new ChildDataSetTableAdapters.ChildTableAdapter();
-                    chRow[0] = child.getName();
-                    chRow[1] = child.getPrimOther();
-                    chRow[2] = child.getSecOther();
-                    chRow[3] = child.getSex();
-                    chRow[4] = child.getPsyNeed();
-                    chRow["secReason"] = child.getSecReason();
-                    chRow["isOwn"] = true;
-                    chRow["parGuid"] = AnketWindow.stAnket.GUID;
-                    chRow["age"] = child.getAge();
-                    chRow["primReason"] = child.getPrimReason();
-                    chDT.AddChildRow(chRow);
-                    chAdapter.Update(chDT);
+                    var clFile = File.Create(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv");
+                    clFile.Close();                                       
+
+                    CSVWriter csvw = new CSVWriter(clientList);
+                    csvw.AddColumn("surname", "surname");
+                    csvw.AddColumn("name", "name");
+                    csvw.AddColumn("age", "age");
+                    csvw.AddColumn("ownChildCount", "ownChildCount");
+                    csvw.AddColumn("careChildCount", "careChildCount");
+                    csvw.AddColumn("familyType", "familyType");
+                    csvw.AddColumn("familyStatus", "familyStatus");
+                    csvw.AddColumn("sex", "sex");
+                    csvw.AddColumn("testDate", "testDate");
+                    csvw.AddColumn("GUID", "GUID");
+                    csvw.SaveFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv");
+
+                    return;
                 }
-                foreach (ChildClass child in AnketWindow.stListChildClass.careChildList)
-                {
-                    ChildDataSet.ChildDataTable chDT = new ChildDataSet.ChildDataTable();
-                    ChildDataSet.ChildRow chRow = chDT.NewChildRow();
-                    ChildDataSetTableAdapters.ChildTableAdapter chAdapter = new ChildDataSetTableAdapters.ChildTableAdapter();
-                    chRow[0] = child.getName();
-                    chRow[1] = child.getPrimOther();
-                    chRow[2] = child.getSecOther();
-                    chRow[3] = child.getSex();
-                    chRow[4] = child.getPsyNeed();
-                    chRow["secReason"] = child.getSecReason();
-                    chRow["isOwn"] = false;
-                    chRow["parGuid"] = AnketWindow.stAnket.GUID;
-                    chRow["age"] = child.getAge();
-                    chRow["primReason"] = child.getPrimReason();
-                    chDT.AddChildRow(chRow);
-                    chAdapter.Update(chDT);
-                }
-                #endregion
+                /*
                 this.Hide();
                 ResultWindow1 = new ResultWindow();
                 ResultWindow1.ShowDialog();
-                return;
+                return;*/
             }
 
             radioButton1.IsChecked = false;
@@ -166,7 +124,7 @@ namespace PariWPF
 
             string Content = Convert.ToString(curQuest) + ". " + AnketWindow.stAnket.getQuest(curQuest - 1);
             labelQuest.Content = new TextBlock() { Text = Content, TextWrapping = TextWrapping.Wrap };
-            
+
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -214,8 +172,8 @@ namespace PariWPF
         {
             labelQuest.Width = Grid1.ActualWidth - 50;
             labelQuest.Height = 150;
-            button1.Margin = new Thickness((Grid1.ActualWidth /2 - 50), (Grid1.ActualHeight / 4) * 3, 0, 0);
-            labelTimer.Margin = new Thickness(0, 0, 100, 50);            
+            button1.Margin = new Thickness((Grid1.ActualWidth / 2 - 50), (Grid1.ActualHeight / 4) * 3, 0, 0);
+            labelTimer.Margin = new Thickness(0, 0, 100, 50);
         }
     }
 }

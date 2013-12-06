@@ -54,6 +54,9 @@
     <ApplicationIcon>Images\lime.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="elpexts">
+      <HintPath>..\..\elpExtensions\elpexts\bin\Release\elpexts.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
