@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -70,7 +71,7 @@ namespace PariWPF
                 MessageBox.Show("Не выбран ни один вариант");
                 return;
             }
-            if (radioButton1.IsChecked.Value == true) AnketWindow.stAnket.setAnswArray(curQuest - 1, 1);//AnketWindow.stAnket.answArray[curQuest - 1].value = 1;
+            if (radioButton1.IsChecked.Value == true) AnketWindow.stAnket.setAnswArray(curQuest - 1, 1);
             if (radioButton2.IsChecked.Value == true) AnketWindow.stAnket.setAnswArray(curQuest - 1, 2);
             if (radioButton3.IsChecked.Value == true) AnketWindow.stAnket.setAnswArray(curQuest - 1, 3);
             if (radioButton4.IsChecked.Value == true) AnketWindow.stAnket.setAnswArray(curQuest - 1, 4);
@@ -86,6 +87,12 @@ namespace PariWPF
                 if (File.Exists(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.dat") &&
                     File.Exists(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\ch.dat"))
                 {
+                    
+                    Crypt.EncryptFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.dat",
+                                        Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv",
+                                        Crypt.EncryptDirection.Decription);
+
+                    return;
                 }
                 else
                 {
@@ -106,7 +113,19 @@ namespace PariWPF
                     csvw.AddColumn("sex", "sex");
                     csvw.AddColumn("testDate", "testDate");
                     csvw.AddColumn("GUID", "GUID");
+                    for (int i = 0; i < 23; i++)
+                    {
+                        string columnName = "a" + i.ToString();
+                        csvw.AddColumn(columnName, "getAspect", new object[] { i });
+                    }
                     csvw.SaveFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv");
+                    //------------------------------------------
+
+                    Crypt.EncryptFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv",
+                                        Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.dat",
+                                        Crypt.EncryptDirection.Encryption);
+                    
+                    
 
                     return;
                 }
