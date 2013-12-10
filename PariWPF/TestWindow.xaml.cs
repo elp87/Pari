@@ -124,6 +124,8 @@ namespace PariWPF
                     Crypt.EncryptFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv",
                                         Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.dat",
                                         Crypt.EncryptDirection.Encryption);
+
+                    
                     
                     
 

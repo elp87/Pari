@@ -6,11 +6,7 @@ namespace PariClasses
     /// <summary>Класс ребенка</summary>
     public class ChildClass
     {
-        private string name, primOther, secOther, secReason;
-        private int age, primReason;
-        private bool sex, psyNeed;
-        private bool[] secReason1 = new bool[11];
-        
+        #region Constructors
         /// <summary>
         /// Конструктор класса
         /// </summary>
@@ -32,7 +28,7 @@ namespace PariClasses
             this.primOther = primOther;
             this.secOther = secOther;
             this.secReason = secReason;
-            
+
         }
 
         /// <summary>
@@ -54,8 +50,22 @@ namespace PariClasses
             this.primReason = primReason;
             this.primOther = primOther;
             this.secOther = secOther;
-        }
+        } 
+        #endregion
 
+        #region Properties
+        public string name { get; set; }
+        public string primOther { get; set; }
+        public string secOther { get; set; }
+        public string secReason { get; set; }
+        public int age { get; set; }
+        public int primReason { get; set; }
+        public bool sex { get; set; }
+        public bool psyNeed { get; set; }
+        public bool isOwn { get; set; }
+        #endregion
+
+        #region Methods
         /// <summary>Устанавливает вторичную причину</summary>
         public void setSecReason(string value) { this.secReason = value; }
 
@@ -66,28 +76,9 @@ namespace PariClasses
         public int getPrimReason() { return primReason; }
         public bool getSex() { return sex; }
         public bool getPsyNeed() { return psyNeed; }
-        public string getSecReason() { return secReason; }
-
-        //public string Primary()
-        //{
-        //    //string res;
-        //    switch (getPrimReason())
-        //    {
-        //        case 0: return "Сложные отношения с ребенком";
-        //        case 1: return "Изменение поведения ребенка";
-        //        case 2: return "Страхи (фобии) ребенка";
-        //        case 3: return "Агрессивное поведение";
-        //        case 4: return "Трудности в обучении";
-        //        case 5: return "Трудности в общении с ровесниками (одноклассниками)";
-        //        case 6: return "Частые ссоры с другими детьми в семье";
-        //        case 7: return "Постоянные споры с отцом";
-        //        case 8: return "Постоянные споры с матерью";
-        //        case 9: return "Суицидальные попытки";
-        //        case 10: return this.getPrimOther(); ;
-        //        default: return "";
-
-        //    }
-        //}
+        public string getSecReason() { return secReason; } 
+        #endregion
+        
     }
 
     public class ListChildClass

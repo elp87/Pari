@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
@@ -15,14 +16,13 @@ namespace PariWPF
     {
         
         ChildAnketWindow ChildAnketWindow1;
-        //TestWindow TestWindow1;
         famTypeList familyTypes;
         famStatusList familyStatuses;
         public static childProblemList childProblems;
         XDocument curOptions;
-        //globalOptions globalOptions;
         public static AdPerson stAnket = new AdPerson();
-        public static ListChildClass stListChildClass = new ListChildClass();
+        //public static ListChildClass stListChildClass = new ListChildClass();
+        public static List<ChildClass> childList = new List<ChildClass>();
         ObservableCollection<ChildGridClass> OwnChildGridColl = new ObservableCollection<ChildGridClass>();
         ObservableCollection<ChildGridClass> CareChildGridColl = new ObservableCollection<ChildGridClass>();
 
@@ -31,6 +31,7 @@ namespace PariWPF
             InitializeComponent();
 
             //Проверка на версию демо/полная
+            // TODO: Убрать бд
             try
             {
                 
@@ -152,8 +153,7 @@ namespace PariWPF
             
             
             this.Hide();
-            //TestWindow1.Title = stAnket.surname + " " + stAnket.name + " - методика PARI";
-            //TestWindow1.Show(); 
+            
             InstructionsWindow curInstructionsWindow = new InstructionsWindow();
             curInstructionsWindow.showDocument(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\clManual2.rtf", 2);
             curInstructionsWindow.ShowDialog();
@@ -173,9 +173,13 @@ namespace PariWPF
                 return;
             }
             
-            OwnChildGridColl.Add(new ChildGridClass() {name=stListChildClass.ownChildList[stListChildClass.ownChildList.Count - 1].getName(), 
+            OwnChildGridColl.Add(new ChildGridClass() { name = childList[childList.Count -1].name,
+                                                        age = childList[childList.Count - 1].age,
+                                                        reason = childProblems.getName(childList[childList.Count - 1].primReason, childList[childList.Count - 1].primOther)
+            
+                /*name=stListChildClass.ownChildList[stListChildClass.ownChildList.Count - 1].getName(), 
                                                        age = stListChildClass.ownChildList[stListChildClass.ownChildList.Count - 1].getAge(),
-                                                       reason = childProblems.getName(stListChildClass.ownChildList[stListChildClass.ownChildList.Count - 1].getPrimReason(), stListChildClass.ownChildList[stListChildClass.ownChildList.Count - 1].getPrimOther())
+                                                       reason = childProblems.getName(stListChildClass.ownChildList[stListChildClass.ownChildList.Count - 1].getPrimReason(), stListChildClass.ownChildList[stListChildClass.ownChildList.Count - 1].getPrimOther())*/
             });
             dataGridOwnChild.Items.Refresh();                                                      
         }
@@ -193,9 +197,13 @@ namespace PariWPF
                 ChildAnketWindow.isClosed = false;
                 return;
             }
-            CareChildGridColl.Add(new ChildGridClass() {name = stListChildClass.careChildList[stListChildClass.careChildList.Count - 1].getName(),
+            CareChildGridColl.Add(new ChildGridClass() { name = childList[childList.Count - 1].name,
+                                                         age = childList[childList.Count - 1].age,
+                                                         reason = childProblems.getName(childList[childList.Count - 1].primReason, childList[childList.Count - 1].primOther)
+
+                /*name = stListChildClass.careChildList[stListChildClass.careChildList.Count - 1].getName(),
                                                         age = stListChildClass.careChildList[stListChildClass.careChildList.Count - 1].getAge(),
-                                                        reason = childProblems.getName(stListChildClass.careChildList[stListChildClass.careChildList.Count - 1].getPrimReason(), stListChildClass.careChildList[stListChildClass.careChildList.Count - 1].getPrimOther())
+                                                        reason = childProblems.getName(stListChildClass.careChildList[stListChildClass.careChildList.Count - 1].getPrimReason(), stListChildClass.careChildList[stListChildClass.careChildList.Count - 1].getPrimOther())*/
             });
             dataGridCareChild.Items.Refresh();
         }

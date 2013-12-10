@@ -80,8 +80,10 @@ namespace PariWPF
             curChild = new ChildClass(textBoxName.Text, textBoxAge.Text, comboBoxSex.SelectedIndex, checkBoxPsyNeed.IsChecked.Value,
                 AnketWindow.childProblems.getDBNum(comboBoxPrimReason.SelectedIndex), textBoxPrimOther.Text, AnketWindow.childProblems.genDBNumArray(listBoxSecReason), textBoxSecOther.Text);
 
-            if (isOwn == true) AnketWindow.stListChildClass.ownChildList.Add(curChild);
-            if (isOwn == false) AnketWindow.stListChildClass.careChildList.Add(curChild);
+            if (isOwn == true) curChild.isOwn = true;
+            if (isOwn == false) curChild.isOwn = false;
+
+            AnketWindow.childList.Add(curChild);
 
             isClosed = false;
             this.Close();    
