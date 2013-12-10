@@ -102,32 +102,48 @@ namespace PariWPF
                     var clFile = File.Create(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv");
                     clFile.Close();                                       
 
-                    CSVWriter csvw = new CSVWriter(clientList);
-                    csvw.AddColumn("surname", "surname");
-                    csvw.AddColumn("name", "name");
-                    csvw.AddColumn("age", "age");
-                    csvw.AddColumn("ownChildCount", "ownChildCount");
-                    csvw.AddColumn("careChildCount", "careChildCount");
-                    csvw.AddColumn("familyType", "familyType");
-                    csvw.AddColumn("familyStatus", "familyStatus");
-                    csvw.AddColumn("sex", "sex");
-                    csvw.AddColumn("testDate", "testDate");
-                    csvw.AddColumn("GUID", "GUID");
+                    CSVWriter csvClient = new CSVWriter(clientList);
+                    csvClient.AddColumnProperty("surname", "surname");
+                    csvClient.AddColumnProperty("name", "name");
+                    csvClient.AddColumnProperty("age", "age");
+                    csvClient.AddColumnProperty("ownChildCount", "ownChildCount");
+                    csvClient.AddColumnProperty("careChildCount", "careChildCount");
+                    csvClient.AddColumnProperty("familyType", "familyType");
+                    csvClient.AddColumnProperty("familyStatus", "familyStatus");
+                    csvClient.AddColumnProperty("sex", "sex");
+                    csvClient.AddColumnProperty("testDate", "testDate");
+                    csvClient.AddColumnProperty("GUID", "GUID");
                     for (int i = 0; i < 23; i++)
                     {
                         string columnName = "a" + i.ToString();
-                        csvw.AddColumn(columnName, "getAspect", new object[] { i });
+                        csvClient.AddColumnMethod(columnName, "getAspect", new object[] { i });
                     }
-                    csvw.SaveFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv");
-                    //------------------------------------------
-
+                    csvClient.SaveFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv");
+                    
                     Crypt.EncryptFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.csv",
                                         Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\cl.dat",
                                         Crypt.EncryptDirection.Encryption);
 
-                    
-                    
-                    
+                    //-------------------------------------------
+                    var chFile = File.Create(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\ch.csv");
+                    chFile.Close();
+
+                    CSVWriter csvChildren = new CSVWriter(AnketWindow.childList);
+                    csvChildren.AddColumnProperty("name", "name");
+                    csvChildren.AddColumnProperty("age", "age");
+                    csvChildren.AddColumnProperty("sex", "sex");
+                    csvChildren.AddColumnProperty("isOwn", "isOwn");
+                    csvChildren.AddColumnProperty("psyNeed", "psyNeed");
+                    csvChildren.AddColumnProperty("primReason", "primReason");
+                    csvChildren.AddColumnProperty("primOther", "primOther");
+                    csvChildren.AddColumnProperty("secReason", "secReason");
+                    csvChildren.AddColumnProperty("secOther", "secOther");
+                    csvChildren.AddColumnConst("parGuid", AnketWindow.stAnket.GUID);
+                    csvChildren.SaveFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\ch.csv");
+
+                    Crypt.EncryptFile(Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\ch.csv",
+                                        Environment.GetEnvironmentVariable("appdata") + @"\Felicia\Pari\ch.dat",
+                                        Crypt.EncryptDirection.Encryption);
 
                     return;
                 }
